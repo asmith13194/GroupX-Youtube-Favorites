@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import SearchBar from './SearchBar'
+import SearchContainer from './SearchContainer'
 
 class SearchPage extends Component {
   constructor(props) {
@@ -10,11 +12,11 @@ class SearchPage extends Component {
     return (
       <div>
 
-        <div>
+        <h4>Welcome!</h4>
 
-          <h4>Welcome!</h4>
+        <SearchBar />
 
-        </div>
+        <SearchContainer />
 
       </div>
     );
