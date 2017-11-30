@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import '../App.sss';
 
 class Card extends Component {
   constructor(props) {
@@ -7,18 +8,57 @@ class Card extends Component {
   }
 
   render() {
-    const { description, length, title, thumbnail } = this.props.video;
+    const { video } = this.props;
 
     return (
-      <div id='card'>
+      <div
+        id={`card-${video.id.videoId}`}
+        className={'card'}
+      >
 
-        <img id='card-thumbnail' src={thumbnail} alt={''}/>
+        <img
+          id={`card-thumbnail-${video.id.videoId}`}
+          className={'card-img'}
+          src={video.snippet.thumbnails.high.url}
+          alt={'not found'}
+        />
 
-        <h4 id='card-title'>{title}</h4>
+        <div
+          id={`card-content-${video.id.videoId}`}
+          className={'card-content'}
+          >
 
-        <p>{description}</p>
+          <h4
+            id={`card-title-${video.id.videoId}`}
+            className={'card-title'}
+          >
+            {video.snippet.title}
+          </h4>
 
-        <p>{length}</p>
+          <p
+            id={`card-description-${video.id.videoId}`}
+            className={'card-description'}
+          >
+            {video.snippet.description}
+          </p>
+
+          <p
+            id={`card-length-${video.id.videoId}`}
+            className={'card-length'}
+          >
+            {video.snippet.length}
+          </p>
+
+          <button
+            id={`card-favorites-button-${video.id.videoId}`}
+            className={'favorites-button'}
+          >
+            add to favorites
+          </button>
+
+        </div>
+
+
 
       </div>
     );
