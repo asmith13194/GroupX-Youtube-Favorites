@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -13,6 +14,8 @@ class FavoritesPage extends Component {
 
     return (
       <div>
+
+        <Link className={'nav-link'} to={'./'}>Home</Link>
 
         <h4>Favorites</h4>
 
