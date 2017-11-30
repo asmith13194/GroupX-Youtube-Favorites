@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import {
-  makeSearch,
+  fetchData,
   changeSearch, } from '../actions.js'
 
 class SearchBar extends Component {
@@ -14,7 +14,7 @@ class SearchBar extends Component {
 
   render() {
     const {
-      makeSearch,
+      fetchData,
       changeSearch,
       searchReducer, } = this.props;
 
@@ -32,7 +32,7 @@ class SearchBar extends Component {
             <button
               disabled={searchReducer.query === ''}
               id={'search-button'}
-              onClick={makeSearch}
+              onClick={() => fetchData(searchReducer.query)}
             >
               Search
             </button>
@@ -51,7 +51,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    makeSearch,
+    fetchData,
     changeSearch, }, dispatch);
 }
 
