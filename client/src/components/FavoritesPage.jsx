@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class FavoritesPage extends Component {
   constructor(props) {
@@ -7,12 +9,14 @@ class FavoritesPage extends Component {
   }
 
   render() {
+    const { favoritesReducer } = this.props;
+
     return (
       <div>
 
-        <div>
+        <h4>Favorites</h4>
 
-          <h4>Favorites</h4>
+        <div id='favorites-container'>
 
         </div>
 
@@ -21,4 +25,9 @@ class FavoritesPage extends Component {
   }
 }
 
-export default FavoritesPage;
+
+function mapStateToProps(state) {
+  return { favoritesReducer: state.favoritesReducer };
+}
+
+export default withRouter(connect(mapStateToProps, null, null)(FavoritesPage));
