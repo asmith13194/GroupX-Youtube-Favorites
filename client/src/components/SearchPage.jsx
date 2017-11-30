@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar'
 import SearchContainer from './SearchContainer'
 
@@ -12,9 +13,9 @@ class SearchPage extends Component {
     return (
       <div>
 
-        <h4>Welcome!</h4>
-
         <SearchBar />
+
+        <Link className={'nav-link'} to={'./favorites'}>Favorites</Link>
 
         <SearchContainer />
 

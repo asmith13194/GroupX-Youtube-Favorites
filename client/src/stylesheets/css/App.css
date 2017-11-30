@@ -1,0 +1,49 @@
+#search-container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  flex-wrap: wrap; }
+  #search-container .card {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    width: 400px;
+    height: 250px;
+    background: #f4f4f4; }
+    #search-container .card .card-content {
+      position: relative;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      padding: 5px;
+      overflow: hidden; }
+    #search-container .card .favorites-button {
+      position: absolute;
+      width: 100%;
+      bottom: 5px; }
+    #search-container .card h4, #search-container .card p {
+      width: 100%;
+      margin: 0; }
+    #search-container .card p {
+      overflow-y: scroll; }
+    #search-container .card img {
+      width: 45%; }
+
+#search-bar {
+  display: inline-block; }
+
+.nav-link {
+  float: right; }
+
+::-webkit-scrollbar {
+  width: 0px;
+  /* remove scrollbar space */
+  background: transparent;
+  /* optional: just make scrollbar invisible */ }
+
+/*# sourceMappingURL=App.css.map */

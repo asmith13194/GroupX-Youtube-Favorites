@@ -30,8 +30,8 @@ class SearchBar extends Component {
           />
 
             <button
-              disabled={searchReducer.query === ''}
               id={'search-button'}
+              disabled={searchReducer.query === ''}
               onClick={() => fetchData(searchReducer.query)}
             >
               Search
