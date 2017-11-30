@@ -8,49 +8,49 @@ class Card extends Component {
   }
 
   render() {
-    const { video } = this.props;
+    const { video, id } = this.props;
 
     return (
       <div
-        id={`card-${video.id.videoId}`}
+        id={`card-${id}`}
         className={'card'}
       >
 
         <img
-          id={`card-thumbnail-${video.id.videoId}`}
+          id={`card-thumbnail-${id}`}
           className={'card-img'}
-          src={video.snippet.thumbnails.high.url}
+          src={video.thumbnails.high.url}
           alt={'not found'}
         />
 
         <div
-          id={`card-content-${video.id.videoId}`}
+          id={`card-content-${id}`}
           className={'card-content'}
           >
 
           <h4
-            id={`card-title-${video.id.videoId}`}
+            id={`card-title-${id}`}
             className={'card-title'}
           >
-            {video.snippet.title}
+            {video.title}
           </h4>
 
           <p
-            id={`card-description-${video.id.videoId}`}
+            id={`card-description-${id}`}
             className={'card-description'}
           >
-            {video.snippet.description}
+            {video.description}
           </p>
 
           <p
-            id={`card-length-${video.id.videoId}`}
+            id={`card-length-${id}`}
             className={'card-length'}
           >
-            {video.snippet.length}
+            {video.length}
           </p>
 
           <button
-            id={`card-favorites-button-${video.id.videoId}`}
+            id={`card-favorites-button-${id}`}
             className={'favorites-button'}
           >
             add to favorites

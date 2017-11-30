@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import {
   fetchData,
-  changeSearch, } from '../actions.js'
+  changeQuery, } from '../actions.js'
 
 class SearchBar extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class SearchBar extends Component {
   render() {
     const {
       fetchData,
-      changeSearch,
+      changeQuery,
       searchReducer, } = this.props;
 
     return (
@@ -25,7 +25,7 @@ class SearchBar extends Component {
           <input
             id={'query'}
             type={'text'}
-            onChange={changeSearch}
+            onChange={changeQuery}
             value={searchReducer.query}
           />
 
@@ -52,7 +52,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     fetchData,
-    changeSearch, }, dispatch);
+    changeQuery, }, dispatch);
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps, null)(SearchBar));

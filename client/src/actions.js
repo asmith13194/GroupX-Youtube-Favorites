@@ -19,9 +19,9 @@ module.exports = {
     }
   },
 
-  changeSearch: (event) => {
+  changeQuery: (event) => {
     return {
-      type: 'CHANGE_SEARCH',
+      type: 'CHANGE_QUERY',
       payload: event.target.value
     };
   },

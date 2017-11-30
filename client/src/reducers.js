@@ -15,7 +15,7 @@ const searchReducer = (state = {
   isFetching: false,
   selectedVideo: null }, action) => {
  switch(action.type) {
-  case 'CHANGE_SEARCH':
+  case 'CHANGE_QUERY':
     return {
       ...state,
       query: action.payload}
