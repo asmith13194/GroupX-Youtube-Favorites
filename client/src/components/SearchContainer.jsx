@@ -23,7 +23,7 @@ class SearchContainer extends Component {
     return (
       <div id='search-container'>
 
-        {searchReducer.results.map(video => <Card video={video} />)}
+        {searchReducer.results.map((video, i)=> <Card key={i} video={video} />)}
 
       </div>
     );
