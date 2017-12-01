@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-import {
-  addFavorite,
-  deleteFavorite, } from '../actions.js'
+import FavoritesAddButton from './FavoritesAddButton';
+import FavoritesDeleteButton from './FavoritesDeleteButton';
 
 class Card extends Component {
   constructor(props) {
@@ -16,9 +12,7 @@ class Card extends Component {
     const {
       id,
       video,
-      isFavorite,
-      addFavorite,
-      deleteFavorite } = this.props;
+      isFavorite, } = this.props;
 
     return (
       <div
@@ -36,7 +30,7 @@ class Card extends Component {
         <div
           id={`card-content-${id}`}
           className={'card-content'}
-          >
+        >
 
           <h4
             id={`card-title-${id}`}
@@ -54,26 +48,9 @@ class Card extends Component {
 
           {
             isFavorite ?
-            <button
-              id={`card-favorites-button-${id}`}
-              className={'favorites-button'}
-              onClick={() => deleteFavorite(id)}
-            >
-              remove from favorites
-            </button>
+            <FavoritesDeleteButton id={id}/>
             :
-            <button
-              id={`card-favorites-button-${id}`}
-              className={'favorites-button'}
-              onClick={() => addFavorite({
-                videoId: id,
-                title: video.title,
-                description: video.description,
-                thumbnail: video.thumbnail
-              })}
-            >
-              add to favorites
-            </button>
+            <FavoritesAddButton id={id} video={video}/>
           }
 
 
@@ -85,8 +62,4 @@ class Card extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-    addFavorite,
-    deleteFavorite, }, dispatch);
-
-export default withRouter(connect(null, mapDispatchToProps, null)(Card));
+export default Card;

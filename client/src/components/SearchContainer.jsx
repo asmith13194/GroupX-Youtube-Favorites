@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';import Card from './Card'
 import {
+  fetchData,
   getFavorite, } from '../actions.js'
 
 class SearchContainer extends Component {
@@ -12,6 +13,8 @@ class SearchContainer extends Component {
   }
 
   componentDidMount() {
+    this.props.searchReducer.results.length === 0 ?
+    this.props.fetchData('music') : null;
     this.props.getFavorite();
   }
 
@@ -37,7 +40,7 @@ class SearchContainer extends Component {
             }}
             isFavorite={favoritesReducer.favorites.filter(favorite => {
               return favorite.videoId === video.id.videoId
-            }).length !== 0}/>)
+            }).length !== 0 }/>)
           }
 
       </div>
@@ -54,6 +57,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
+    fetchData,
     getFavorite, }, dispatch);
 }
 

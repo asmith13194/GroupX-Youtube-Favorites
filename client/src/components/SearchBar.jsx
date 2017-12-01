@@ -32,7 +32,10 @@ class SearchBar extends Component {
             <button
               id={'search-button'}
               disabled={searchReducer.query === ''}
-              onClick={() => fetchData(searchReducer.query)}
+              onClick={() => {
+                this.props.history.push('/')
+                fetchData(searchReducer.query)
+              }}
             >
               Search
             </button>

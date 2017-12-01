@@ -9,7 +9,7 @@
     display: flex;
     -webkit-flex-direction: row;
     flex-direction: row;
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
     width: 400px;
     height: 250px;
@@ -21,17 +21,15 @@
       -webkit-flex-direction: column;
       flex-direction: column;
       padding: 10px;
-      overflow: hidden; }
-    .card-container .card .favorites-button {
-      position: absolute;
-      width: 100%;
-      bottom: 5px; }
-    .card-container .card h4, .card-container .card p {
-      width: 100%;
-      margin: 0; }
-    .card-container .card p {
-      margin-top: 5px;
-      overflow-y: scroll; }
+      overflow: hidden;
+      justify-content: space-between; }
+      .card-container .card .card-content .favorites-button {
+        width: 100%; }
+      .card-container .card .card-content h4, .card-container .card .card-content p {
+        width: 100%;
+        margin: 0; }
+      .card-container .card .card-content p {
+        overflow-y: scroll; }
     .card-container .card img {
       width: 45%; }
 

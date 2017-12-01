@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
 import FavoritesContainer from './FavoritesContainer';
 
 class FavoritesPage extends Component {
@@ -19,12 +20,7 @@ class FavoritesPage extends Component {
           Home
         </Link>
 
-        <h4
-          id={'favorites-page-title'}
-          className={'page-title'}
-        >
-          Favorites
-        </h4>
+        <SearchBar />
 
         <FavoritesContainer />
 
