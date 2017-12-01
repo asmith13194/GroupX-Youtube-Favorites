@@ -3,7 +3,7 @@ module.exports = {
   getFavorite: () => {
     return dispatch => {
       dispatch({ type: 'GET_FAVORITE_START'})
-      fetch(`http://localhost:8001/favorites`)
+      fetch(`${REACT_APP_BACKEND_URL}/favorites`)
       .then(res => res.json())
       .then(
         data =>  dispatch({ type: 'GET_FAVORITE_SUCCESS', payload: data.favorites }),
@@ -15,7 +15,7 @@ module.exports = {
   addFavorite: (vidObj) => {
      return dispatch => {
       dispatch({ type: 'ADD_FAVORITE_START'})
-       fetch(`http://localhost:8001/favorites`, {
+       fetch(`${REACT_APP_BACKEND_URL}/favorites`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -34,7 +34,7 @@ module.exports = {
   deleteFavorite: (videoId) => {
     return dispatch => {
       dispatch({ type: 'DELETE_FAVORITE_START'})
-      fetch(`http://localhost:8001/favorites/${videoId}`, {method: 'DELETE'})
+      fetch(`${REACT_APP_BACKEND_URL}/favorites/${videoId}`, {method: 'DELETE'})
       .then(res => res.json())
       .then(
         data =>  dispatch({ type: 'DELETE_FAVORITE_SUCCESS', payload: data.favorites }),
