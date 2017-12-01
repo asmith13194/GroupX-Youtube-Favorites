@@ -6,19 +6,26 @@ module.exports = {
       fetch(`http://localhost:8001/favorites`)
       .then(res => res.json())
       .then(
-        data =>  dispatch({ type: 'GET_FAVORITE_SUCCESS', payload: data.items }),
+        data =>  dispatch({ type: 'GET_FAVORITE_SUCCESS', payload: data.favorites }),
         err =>  dispatch({ type: 'GET_FAVORITE_FAILURE', payload: err })
       );
     }
   },
 
-  addFavorite: (favorite) => {
-    return dispatch => {
+  addFavorite: (vidObj) => {
+     return dispatch => {
       dispatch({ type: 'ADD_FAVORITE_START'})
-      fetch(`http://localhost:8001/favorites/add`)
+       fetch(`http://localhost:8001/favorites`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(vidObj)
+      })
       .then(res => res.json())
       .then(
-        data =>  dispatch({ type: 'ADD_FAVORITE_SUCCESS', payload: data.items }),
+        data =>  dispatch({ type: 'ADD_FAVORITE_SUCCESS', payload: data.favorites }),
         err =>  dispatch({ type: 'ADD_FAVORITE_FAILURE', payload: err })
       );
     }
@@ -27,10 +34,10 @@ module.exports = {
   deleteFavorite: (videoId) => {
     return dispatch => {
       dispatch({ type: 'DELETE_FAVORITE_START'})
-      fetch(`http://localhost:8001/favorites/delete/${videoId}`)
+      fetch(`http://localhost:8001/favorites/${videoId}`, {method: 'DELETE'})
       .then(res => res.json())
       .then(
-        data =>  dispatch({ type: 'DELETE_FAVORITE_SUCCESS', payload: data.items }),
+        data =>  dispatch({ type: 'DELETE_FAVORITE_SUCCESS', payload: data.favorites }),
         err =>  dispatch({ type: 'DELETE_FAVORITE_FAILURE', payload: err })
       );
     }

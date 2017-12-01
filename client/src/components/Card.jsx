@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-// import '../App.sss';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import {
+  addFavorite,
+  deleteFavorite, } from '../actions.js'
 
 class Card extends Component {
   constructor(props) {
@@ -8,7 +13,12 @@ class Card extends Component {
   }
 
   render() {
-    const { video, id } = this.props;
+    const {
+      id,
+      video,
+      isFavorite,
+      addFavorite,
+      deleteFavorite } = this.props;
 
     return (
       <div
@@ -19,7 +29,7 @@ class Card extends Component {
         <img
           id={`card-thumbnail-${id}`}
           className={'card-img'}
-          src={video.thumbnails.high.url}
+          src={video.thumbnail}
           alt={'not found'}
         />
 
@@ -42,19 +52,31 @@ class Card extends Component {
             {video.description}
           </p>
 
-          <p
-            id={`card-length-${id}`}
-            className={'card-length'}
-          >
-            {video.length}
-          </p>
+          {
+            isFavorite ?
+            <button
+              id={`card-favorites-button-${id}`}
+              className={'favorites-button'}
+              onClick={() => deleteFavorite(id)}
+            >
+              remove from favorites
+            </button>
+            :
+            <button
+              id={`card-favorites-button-${id}`}
+              className={'favorites-button'}
+              onClick={() => addFavorite({
+                videoId: id,
+                title: video.title,
+                description: video.description,
+                thumbnail: video.thumbnail
+              })}
+            >
+              add to favorites
+            </button>
+          }
 
-          <button
-            id={`card-favorites-button-${id}`}
-            className={'favorites-button'}
-          >
-            add to favorites
-          </button>
+
 
         </div>
 
@@ -63,4 +85,8 @@ class Card extends Component {
   }
 }
 
-export default Card;
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    addFavorite,
+    deleteFavorite, }, dispatch);
+
+export default withRouter(connect(null, mapDispatchToProps, null)(Card));

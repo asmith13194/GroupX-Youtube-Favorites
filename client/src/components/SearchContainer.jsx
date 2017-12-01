@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import Card from './Card'
+import { withRouter } from 'react-router-dom';import Card from './Card'
 import {
-  addFavorite, } from '../actions.js'
+  getFavorite, } from '../actions.js'
 
 class SearchContainer extends Component {
   constructor(props) {
@@ -12,23 +11,34 @@ class SearchContainer extends Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    this.props.getFavorite();
+  }
+
   render() {
     const {
-      addFavorite,
       searchReducer,
       favoritesReducer, } = this.props;
 
-      console.log(searchReducer);
-
     return (
-      <div id='search-container'>
+      <div
+        id='search-container'
+        className='card-container'
+      >
 
         {
-          searchReducer.results.map((video, i)=> <Card
+          searchReducer.results.map(video=> <Card
             key={video.id.videoId}
             id={video.id.videoId}
-            video={video.snippet} />)
-        }
+            video={{
+              title: video.snippet.title,
+              description: video.snippet.description,
+              thumbnail: video.snippet.thumbnails.high.url
+            }}
+            isFavorite={favoritesReducer.favorites.filter(favorite => {
+              return favorite.videoId === video.id.videoId
+            }).length !== 0}/>)
+          }
 
       </div>
     );
@@ -38,12 +48,13 @@ class SearchContainer extends Component {
 function mapStateToProps(state) {
   return {
     searchReducer: state.searchReducer,
-    favoritesReducer: state.favoritesReducer, };
+    favoritesReducer: state.favoritesReducer
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    addFavorite, }, dispatch);
+    getFavorite, }, dispatch);
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps, null)(SearchContainer));

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import FavoritesContainer from './FavoritesContainer';
 
 class FavoritesPage extends Component {
   constructor(props) {
@@ -10,27 +9,28 @@ class FavoritesPage extends Component {
   }
 
   render() {
-    const { favoritesReducer } = this.props;
-
     return (
       <div>
 
-        <Link className={'nav-link'} to={'./'}>Home</Link>
+        <Link
+          className={'nav-link'}
+          to={'./'}
+        >
+          Home
+        </Link>
 
-        <h4>Favorites</h4>
+        <h4
+          id={'favorites-page-title'}
+          className={'page-title'}
+        >
+          Favorites
+        </h4>
 
-        <div id='favorites-container'>
-
-        </div>
+        <FavoritesContainer />
 
       </div>
     );
   }
 }
 
-
-function mapStateToProps(state) {
-  return { favoritesReducer: state.favoritesReducer };
-}
-
-export default withRouter(connect(mapStateToProps, null, null)(FavoritesPage));
+export default FavoritesPage;

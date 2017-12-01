@@ -1,10 +1,10 @@
-#search-container {
+.card-container {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
   flex-direction: row;
   flex-wrap: wrap; }
-  #search-container .card {
+  .card-container .card {
     display: -webkit-flex;
     display: flex;
     -webkit-flex-direction: row;
@@ -14,7 +14,7 @@
     width: 400px;
     height: 250px;
     background: #f4f4f4; }
-    #search-container .card .card-content {
+    .card-container .card .card-content {
       position: relative;
       display: -webkit-flex;
       display: flex;
@@ -22,17 +22,17 @@
       flex-direction: column;
       padding: 10px;
       overflow: hidden; }
-    #search-container .card .favorites-button {
+    .card-container .card .favorites-button {
       position: absolute;
       width: 100%;
       bottom: 5px; }
-    #search-container .card h4, #search-container .card p {
+    .card-container .card h4, .card-container .card p {
       width: 100%;
       margin: 0; }
-    #search-container .card p {
+    .card-container .card p {
       margin-top: 5px;
       overflow-y: scroll; }
-    #search-container .card img {
+    .card-container .card img {
       width: 45%; }
 
 #search-bar {
