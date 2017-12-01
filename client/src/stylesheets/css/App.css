@@ -13,6 +13,7 @@
     padding: 10px;
     width: 400px;
     height: 250px;
+    border: solid 1px rgba(0, 0, 255, 0.25);
     background: #f4f4f4; }
     .card-container .card .card-content {
       position: relative;

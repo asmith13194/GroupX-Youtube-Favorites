@@ -28,7 +28,7 @@ class Card extends Component {
           thumbnail: video.thumbnail
         })}
       >
-        add to favorites
+        save
       </button>
     );
   }

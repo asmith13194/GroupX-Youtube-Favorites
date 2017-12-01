@@ -22,7 +22,7 @@ class Card extends Component {
         className={'favorites-button'}
         onClick={() => deleteFavorite(id)}
       >
-        remove from favorites
+        remove
       </button>
     );
   }
