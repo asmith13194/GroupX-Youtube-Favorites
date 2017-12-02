@@ -13,14 +13,9 @@ class FavoritesPage extends Component {
     return (
       <div>
 
-        <Link
-          className={'nav-link'}
-          to={'./'}
-        >
-          Home
-        </Link>
-
         <SearchBar />
+
+        <Link className={'nav-link'} to={'./'}>Home</Link>
 
         <FavoritesContainer />
 
